@@ -1,0 +1,10 @@
+<h2>Edit</h2>
+<div>
+  <input
+    type="text"
+    id="foodname"
+    [(ngModel)]="food.name"
+    [disabled]="!editMode"
+  />
+  <button (click)="doSave()">Save</button>
+</div>
