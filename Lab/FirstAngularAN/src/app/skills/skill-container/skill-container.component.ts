@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Skill } from "../model/skill.model";
+import { SkillService } from "../skill.service";
 
 @Component({
   selector: "app-skill-container",
@@ -7,15 +8,15 @@ import { Skill } from "../model/skill.model";
   styleUrls: ["./skill-container.component.scss"]
 })
 export class SkillContainerComponent implements OnInit {
-  constructor() {}
+  constructor(private skillService: SkillService) {}
 
-  skills: Skill[] = [
-    { id: 0, name: "TypeScript", hours: 3, completed: false },
-    { id: 1, name: "Node", hours: 2, completed: false },
-    { id: 2, name: "ng Basics", hours: 30, completed: false }
-  ];
+  skills: Skill[];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.skillService.getSkills().subscribe(data => {
+      this.skills = data;
+    });
+  }
 
   selectSkill(item: Skill) {
     console.log(`You clicked ${item.name}`);

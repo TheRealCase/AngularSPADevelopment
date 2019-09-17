@@ -1,0 +1,5 @@
+[
+  { "id": 0, "name": "TypeScript", "hours": 3, "completed": false },
+  { "id": 1, "name": "Node", "hours": 2, "completed": false },
+  { "id": 2, "name": "ng Basics", "hours": 30, "completed": false }
+]
