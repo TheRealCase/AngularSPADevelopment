@@ -1,20 +1,28 @@
-<div>
-  <h2>Food, more food</h2>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Calories</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let f of foods">
-        <td>{{ f.name }}</td>
-        <td>{{ f.price }}</td>
-        <td>{{ f.calories }}</td>
-        <td><a (click)="selectFood(f)">Select</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<mat-table #table [dataSource]="foods">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="cursor: pointer">
+      {{ element.name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="cursor: pointer">
+      {{ element.price | currency: "EUR" }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="calories">
+    <mat-header-cell *matHeaderCellDef> Calories </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="cursor: pointer">
+      {{ element.calories }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="selectFood(row)"
+  ></mat-row>
+</mat-table>

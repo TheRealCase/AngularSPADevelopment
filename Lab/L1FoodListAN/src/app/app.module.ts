@@ -12,6 +12,8 @@ import { FoodComponent } from "./food/food.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FoodsListComponent } from "./foods/foods-list/foods-list.component";
 import { FoodEditComponent } from "./foods/food-edit/food-edit.component";
+import { MaterialModule } from "./material-module";
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { FoodEditComponent } from "./foods/food-edit/food-edit.component";
     SidemenuComponent,
     FoodComponent,
     FoodsListComponent,
-    FoodEditComponent
+    FoodEditComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
