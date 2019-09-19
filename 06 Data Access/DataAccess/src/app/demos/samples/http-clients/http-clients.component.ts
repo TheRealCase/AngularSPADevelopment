@@ -60,7 +60,7 @@ export class HttpClientsComponent implements OnInit {
       SomeHeader: "SomeVal"
     });
 
-    h.set("abc", "def");
+    //h.append("abc", "def");
 
     this.httpClient
       .get(`${environment.apiUrl}api/vouchers`, { headers: h })

@@ -25,7 +25,7 @@ export class ReactiveValidationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ps: PersonService,
-    private mailExistsValidatior: asyncMailExistsValidator
+    private mailExistsValidator: asyncMailExistsValidator
   ) {}
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class ReactiveValidationComponent implements OnInit {
       email: [
         this.person.email,
         [Validators.required, Validators.email],
-        [this.mailExistsValidatior],
+        [this.mailExistsValidator],
         { updateOn: "blur" }
       ],
       wealth: [this.person.wealth]

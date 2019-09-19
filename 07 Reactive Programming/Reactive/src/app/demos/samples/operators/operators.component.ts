@@ -73,7 +73,9 @@ export class OperatorsComponent implements OnInit {
     this.vs
       .getVouchers()
       .pipe(
-        tap(data => console.log("logged using tap() operator: ", data)),
+        tap(data =>
+          data.map(i => console.log("logged using tap() operator: ", i))
+        ),
         map(vs => vs.map(this.setLabel))
       )
       .subscribe(data => this.log("use pipe(), map() & tap()", data));
@@ -128,18 +130,18 @@ export class OperatorsComponent implements OnInit {
   }
 
   useFlatMap() {
-    let url = `${environment.apiUrl}api/vouchers/2`;
+    let url = `${environment.apiUrl}/vouchers/2`;
     this.httpClient
       .get<Voucher>(url)
       .pipe(
         flatMap(data => {
           let acctID = data.Details[0].AccountID;
           return this.httpClient.get<Account>(
-            `${environment.apiUrl}api/accounts/${acctID}`
+            `${environment.apiUrl}/accounts/${acctID}`
           );
         })
       )
-      .subscribe(acct => console.log("acct", acct));
+      .subscribe(acct => console.log("acct", acct.id));
   }
 
   public requestMockVM(): Observable<number[]> {
